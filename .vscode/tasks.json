@@ -4,9 +4,54 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "echo",
+            "label": "make spp",
             "type": "shell",
-            "command": "echo Hello"
+            "command": "make",
+            "args": [
+                "-j"
+            ],
+            "options": {
+                "cwd": "spp",
+                "env": {
+                    "RTE_SDK": "/home/dpdk/dpdk-home/tmp/dpdk",
+                    "RTE_TARGET": "x86_64-native-linuxapp-gcc"
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+        {
+            "label": "make dpdk",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "install",
+                "T=$RTE_TARGET",
+                "-j"
+            ],
+            "options": {
+                "cwd": "dpdk",
+                "env": {
+                    "RTE_TARGET": "x86_64-native-linuxapp-gcc"
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+
+        {
+            "label": "run spp",
+            "type": "shell",
+            "command": "bash start.sh",
+            "args": [],
+            "options": {
+                "cwd": "spp/bin",
+            }
         }
     ]
 }
