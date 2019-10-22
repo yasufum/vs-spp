@@ -11,15 +11,44 @@
                 "-j"
             ],
             "options": {
-                "cwd": "spp",
+                "cwd": "${workspaceFolder}/spp",
                 "env": {
-                    "RTE_SDK": "/home/dpdk/dpdk-home/tmp/dpdk",
+                    "RTE_SDK": "${workspaceFolder}/dpdk",
                     "RTE_TARGET": "x86_64-native-linuxapp-gcc"
+                }
+            }
+        },
+
+        {
+            "label": "make debug spp",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "-j"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/spp",
+                "env": {
+                    "RTE_SDK": "${workspaceFolder}/dpdk",
+                    "RTE_TARGET": "x86_64-native-linuxapp-gcc",
+                    "EXTRA_CFLAGS": "-O0 -g"
                 }
             },
             "group": {
                 "kind": "build",
                 "isDefault": true
+            }
+        },
+
+        {
+            "label": "clean spp",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "dist-clean"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/spp"
             }
         },
 
@@ -33,14 +62,29 @@
                 "-j"
             ],
             "options": {
-                "cwd": "dpdk",
+                "cwd": "${workspaceFolder}/dpdk",
                 "env": {
-                    "RTE_TARGET": "x86_64-native-linuxapp-gcc"
+                    "RTE_TARGET": "x86_64-native-linuxapp-gcc",
+                    "EXTRA_CFLAGS": "-O0 -g"
                 }
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": false
+            }
+        },
+
+        {
+            "label": "make debug dpdk",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "install",
+                "T=$RTE_TARGET",
+                "-j"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/dpdk",
+                "env": {
+                    "RTE_TARGET": "x86_64-native-linuxapp-gcc",
+                    "EXTRA_CFLAGS": "-O0 -g"
+                }
             }
         },
 
@@ -50,7 +94,7 @@
             "command": "bash start.sh",
             "args": [],
             "options": {
-                "cwd": "spp/bin",
+                "cwd": "${workspaceFolder}/spp/bin",
             }
         }
     ]
