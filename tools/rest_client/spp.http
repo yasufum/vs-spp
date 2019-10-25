@@ -2,12 +2,9 @@
 
 ### Statsu
 GET http://{{host}}:{{ctlApiPort}}/{{version}}/processes
-content-type: application/json
 
 ### CPU layout
 GET http://{{host}}:{{ctlApiPort}}/{{version}}/cpu_layout
-content-type: application/json
 
 ### CPU usage
 GET http://{{host}}:{{ctlApiPort}}/{{version}}/cpu_usage
-content-type: application/json

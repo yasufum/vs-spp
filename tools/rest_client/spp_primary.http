@@ -2,11 +2,9 @@
 
 ### Statsu
 GET http://{{host}}:{{ctlApiPort}}/{{version}}/primary/status
-content-type: application/json
 
 ### Add port
 PUT http://{{host}}:{{ctlApiPort}}/{{version}}/primary/ports
-content-type: application/json
 
 {
     "action": "add",
@@ -15,7 +13,6 @@ content-type: application/json
 
 ### Delete port
 PUT http://{{host}}:{{ctlApiPort}}/{{version}}/primary/ports
-content-type: application/json
 
 {
     "action": "del",
@@ -34,7 +31,6 @@ PUT http://{{host}}:{{ctlApiPort}}/{{version}}/primary/forward
 
 ### Clear statistics
 DELETE http://{{host}}:{{ctlApiPort}}/{{version}}/primary/status
-content-type: application/json
 
 ### Patch ports
 PUT http://{{host}}:{{ctlApiPort}}/{{version}}/primary/patches
@@ -63,3 +59,6 @@ PUT http://{{host}}:{{ctlApiPort}}/{{version}}/primary/launch
         "-s": "{{host}}:{{secPort}}"
     }
 }
+
+### Terminate process
+DELETE http://{{host}}:{{ctlApiPort}}/{{version}}/primary
