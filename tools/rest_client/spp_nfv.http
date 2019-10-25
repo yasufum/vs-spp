@@ -1,0 +1,45 @@
+# Variables are defined in `${workspaceFolder}.vscode/settings.json`.
+@sec_id = 1
+
+### Statsu
+GET http://{{host}}:{{ctlApiPort}}/{{version}}/nfvs/{{sec_id}}
+
+### Start forwarding
+PUT http://{{host}}:{{ctlApiPort}}/{{version}}/nfvs/{{sec_id}}/forward
+
+{"action": "start"}
+
+### Stop forwarding
+PUT http://{{host}}:{{ctlApiPort}}/{{version}}/nfvs/{{sec_id}}/forward
+
+{"action": "stop"}
+
+### Add port
+PUT http://{{host}}:{{ctlApiPort}}/{{version}}/nfvs/{{sec_id}}/ports
+
+{
+    "action": "add",
+    "port": "ring:1"
+}
+
+### Delete port
+PUT http://{{host}}:{{ctlApiPort}}/{{version}}/nfvs/{{sec_id}}/ports
+
+{
+    "action": "del",
+    "port": "ring:0"
+}
+
+### Patch ports
+PUT http://{{host}}:{{ctlApiPort}}/{{version}}/nfvs/{{sec_id}}/patches
+
+{
+    "src": "ring:0",
+    "dst": "ring:1"
+}
+
+### Reset patches
+DELETE http://{{host}}:{{ctlApiPort}}/{{version}}/nfvs/{{sec_id}}/patches
+
+### Terminate process
+DELETE http://{{host}}:{{ctlApiPort}}/{{version}}/nfvs/{{sec_id}}
