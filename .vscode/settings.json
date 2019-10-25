@@ -1,0 +1,13 @@
+{
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "version": "v1",
+            "host": "127.0.0.1",
+            "secPort": 6666,
+            "ctlApiPort": 7777
+        },
+        "local": {
+            "host": "127.0.0.1"
+        }
+    }
+}
