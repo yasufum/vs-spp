@@ -55,7 +55,7 @@ PUT http://{{host}}:{{ctlApiPort}}/{{version}}/primary/launch
     "client_id": "1",
     "eal": {
         "-m": "512",
-        "-l": "1-2",
+        "-l": "2-3",
         "--proc-type": "secondary"
     },
     "app": {
