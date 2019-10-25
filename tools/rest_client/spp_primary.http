@@ -1,0 +1,63 @@
+### statsu
+GET http://127.0.0.1:7777/v1/primary/status
+content-type: application/json
+
+### add port
+PUT http://127.0.0.1:7777/v1/primary/ports
+content-type: application/json
+
+{
+    "action": "add",
+    "port": "ring:1"
+}
+
+### delete port
+PUT http://127.0.0.1:7777/v1/primary/ports
+content-type: application/json
+
+{
+    "action": "del",
+    "port": "ring:0"
+}
+
+### Start forwarding
+PUT http://127.0.0.1:7777/v1/primary/forward
+
+{"action": "start"}
+
+### Stop forwarding
+PUT http://127.0.0.1:7777/v1/primary/forward
+
+{"action": "stop"}
+
+### clear statistics
+DELETE http://127.0.0.1:7777/v1/primary/status
+content-type: application/json
+
+### Patch ports
+PUT http://127.0.0.1:7777/v1/primary/patches
+
+{
+    "src": "ring:0",
+    "dst": "ring:1"
+}
+
+### Reset patches
+DELETE http://127.0.0.1:7777/v1/primary/patches
+
+### Launch secondary process
+PUT http://127.0.0.1:7777/v1/primary/launch
+
+{
+    "proc_name": "spp_nfv",
+    "client_id": "1",
+    "eal": {
+        "-m": "512",
+        "-l": "1,2",
+        "--proc-type": "secondary"
+    },
+    "app": {
+        "-s": "127.0.0.1:6666",
+        "-n": "1"
+    }
+}
